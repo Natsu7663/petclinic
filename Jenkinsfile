@@ -57,11 +57,11 @@ pipeline {
         stage("Docker Build & Push"){
             steps{
                 script{
-                   withDockerRegistry(credentialsId: ''9c41157e-870c-4aae-8e00-cab3a8b216bb', toolName: 'docker') {
+                   withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         
                         sh "docker build -t image1 ."
-                        sh "docker tag image1 writetoritika/pet-clinic123:latest "
-                        sh "docker push writetoritika/pet-clinic123:latest "
+                        sh "docker tag image1 joy4boy/pet-clinic123:latest "
+                        sh "docker push joy4boy/pet-clinic123:latest "
                     }
                 }
             }
@@ -69,7 +69,7 @@ pipeline {
         
         stage("TRIVY"){
             steps{
-                sh " trivy image writetoritika/pet-clinic123:latest"
+                sh " trivy image joy4boy/pet-clinic123:latest"
             }
         }
         
